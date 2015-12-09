@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 import org.junit.Test;
 
 import com.test.sales.product.ProductFactory;
-import com.test.sales.product.item.AbstractProduct;
 import com.test.sales.product.item.IItemProduct;
 
 public class SalesTaxesTester {
@@ -75,10 +74,10 @@ public class SalesTaxesTester {
         
         printCartProduct(cart);
 
-		assertTrue(0 == new BigDecimal("10.50").compareTo(importedChocolates.getPriceWithTax()));
-		assertTrue(0 == new BigDecimal("54.65").compareTo(importedPerfume.getPriceWithTax()));
-		assertTrue(0 == new BigDecimal("7.65").compareTo(cart.getSalesTaxes()));
-		assertTrue(0 == new BigDecimal("65.15").compareTo(cart.getTotalWithTax()));
+		assertTrue(0 == BigDecimal.valueOf(10.50d).compareTo(importedChocolates.getPriceWithTax()));
+		assertTrue(0 == BigDecimal.valueOf(54.65d).compareTo(importedPerfume.getPriceWithTax()));
+		assertTrue(0 == BigDecimal.valueOf(7.65d).compareTo(cart.getSalesTaxes()));
+		assertTrue(0 == BigDecimal.valueOf(65.15d).compareTo(cart.getTotalWithTax()));
 	}
 
 	// Input 3:
@@ -116,14 +115,15 @@ public class SalesTaxesTester {
        
         printCartProduct(cart);
         
-		assertTrue(0 == new BigDecimal("32.19").compareTo(importedPerfume.getPriceWithTax()));
-		assertTrue(0 == new BigDecimal("20.89").compareTo(perfume.getPriceWithTax()));
-		assertTrue(0 == new BigDecimal("9.75").compareTo(headachePills.getPriceWithTax()));
-		assertTrue(0 == new BigDecimal("11.85").compareTo(importedChocolates.getPriceWithTax()));
+		assertTrue(0 == BigDecimal.valueOf(32.19d).compareTo(importedPerfume.getPriceWithTax()));
+		assertTrue(0 == BigDecimal.valueOf(20.89d).compareTo(perfume.getPriceWithTax()));
+		assertTrue(0 == BigDecimal.valueOf(9.75d).compareTo(headachePills.getPriceWithTax()));
+		assertTrue(0 == BigDecimal.valueOf(11.85d).compareTo(importedChocolates.getPriceWithTax()));
 		
-		assertTrue(0 == new BigDecimal("6.70").compareTo(cart.getSalesTaxes()));
-		assertTrue(0 == new BigDecimal("74.68").compareTo(cart.getTotalWithTax()));
+		assertTrue(0 == BigDecimal.valueOf(6.70d).compareTo(cart.getSalesTaxes()));
+		assertTrue(0 == BigDecimal.valueOf(74.68d).compareTo(cart.getTotalWithTax()));
 	}
+	
 	private void printCartProduct(ShoppingCart cart) {
 		StringBuilder sb = new StringBuilder();
 
