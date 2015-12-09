@@ -19,7 +19,7 @@ import com.test.sales.product.item.impl.PersonalCare;
 public class ProductFactory {
 
 	static {
-		ProductFactory.instance().registerProduct("BOOK_001", new ProductBuilder("1 book", Book.class, new BigDecimal("12.49"), Exempt ));
+		ProductFactory.instance().registerProduct("BOOK_001", new ProductBuilder("1 book", Book.class, BigDecimal.valueOf(12.49d), Exempt ));
 		ProductFactory.instance().registerProduct("CD_001", new ProductBuilder("1 music CD", Media.class, BigDecimal.valueOf(14.99d), Normal ));
 		ProductFactory.instance().registerProduct("CHOCO_001", new ProductBuilder("1 chocolate bar", Food.class, BigDecimal.valueOf(0.85d), Exempt ));
 	
