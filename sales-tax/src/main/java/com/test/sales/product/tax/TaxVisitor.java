@@ -2,6 +2,7 @@ package com.test.sales.product.tax;
 
 import java.math.BigDecimal;
 
+import com.test.sales.product.item.IItemProduct;
 import com.test.sales.product.item.impl.Book;
 import com.test.sales.product.item.impl.Food;
 import com.test.sales.product.item.impl.Media;
@@ -16,43 +17,39 @@ public class TaxVisitor implements IVisitor {
     @Override
     public void visit(Medicine medicine) {
     	
-		this.salesTaxes = medicine.getSalesTaxes().add(this.salesTaxes);
-		
-    	this.totalWithTax = this.totalWithTax.add(medicine.getPriceWithTax());
+		performeTax( medicine );	
     }
     
     @Override
     public void visit(Book book) {
 
-		this.salesTaxes = book.getSalesTaxes().add(this.salesTaxes);
-
-    	this.totalWithTax = this.totalWithTax.add(book.getPriceWithTax());
+		performeTax( book );	
     }
 
     @Override
     public void visit(Media media) {
  
-		this.salesTaxes = media.getSalesTaxes().add(this.salesTaxes);
-
-    	this.totalWithTax = this.totalWithTax.add(media.getPriceWithTax());
+		performeTax( media );	
     }
 
     @Override
     public void visit(Food food) {
   
-		this.salesTaxes = food.getSalesTaxes().add(this.salesTaxes);
-
-    	this.totalWithTax = this.totalWithTax.add(food.getPriceWithTax());
+		performeTax( food );	
     }
 
 	@Override
 	public void visit(PersonalCare personal) {
 
-		this.salesTaxes = personal.getSalesTaxes().add(this.salesTaxes);
-
-		this.totalWithTax = this.totalWithTax.add(personal.getPriceWithTax());
+		performeTax( personal );	
 	}
 		
+	protected void performeTax(IItemProduct item) {
+		
+		this.salesTaxes = this.salesTaxes.add( item.getSalesTaxes() );
+		this.totalWithTax = this.totalWithTax.add( item.getPriceWithTax() );		
+	}
+	
     public BigDecimal getSalesTaxes() {
 		return salesTaxes;
 	}
