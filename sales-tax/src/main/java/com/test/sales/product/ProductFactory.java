@@ -36,6 +36,8 @@ public class ProductFactory {
 
 	private static ProductFactory instance;
 	
+	private ProductFactory() {}
+	
 	public static ProductFactory instance() {
 
 		if (instance == null) {
